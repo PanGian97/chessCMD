@@ -21,7 +21,7 @@ public abstract class Piece {
         this.location = newLoc;
     }
 
-   public abstract void moveTo(Location newLoc) throws InvalidMoveException;
+   public abstract Boolean canMove(Location newLoc) throws InvalidMoveException;
 
     @Override
     public abstract String toString();

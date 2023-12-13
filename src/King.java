@@ -4,7 +4,7 @@ public class King extends Piece {
     }
 
     @Override
-    public void moveTo(Location newLoc) throws InvalidMoveException {
+    public Boolean canMove(Location newLoc) throws InvalidMoveException {
         // Calculate the difference in rows and columns between the current and new location
         int rowDiff = Math.abs(newLoc.getRow() - this.location.getRow());
         int colDiff = Math.abs(newLoc.getCol() - this.location.getCol());
@@ -28,6 +28,7 @@ public class King extends Piece {
             throw new InvalidMoveException("Invalid move: King can only move one square in any direction.");
         }
 
+        return null;
     }
 
     @Override

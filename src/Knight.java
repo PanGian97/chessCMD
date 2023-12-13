@@ -4,7 +4,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public void moveTo(Location newLoc) throws InvalidMoveException {
+    public Boolean canMove(Location newLoc) throws InvalidMoveException {
         // Calculate the differences in rows and columns
         int rowDiff = Math.abs(newLoc.getRow() - this.location.getRow());
         int colDiff = Math.abs(newLoc.getCol() - this.location.getCol());
@@ -28,6 +28,7 @@ public class Knight extends Piece {
         } else {
             throw new InvalidMoveException("Invalid move: Knight can only move in an L shape.");
         }
+        return null;
     }
 
     @Override

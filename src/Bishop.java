@@ -4,8 +4,9 @@ public class Bishop extends Piece {
     }
 
     @Override
-    public void moveTo(Location newLoc) throws InvalidMoveException {
+    public Boolean canMove(Location newLoc) throws InvalidMoveException {
         // Implement king-specific move logic
+        return null;
     }
 
     @Override

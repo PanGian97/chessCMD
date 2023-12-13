@@ -4,7 +4,7 @@ public class Queen extends Piece {
     }
 
     @Override
-    public void moveTo(Location newLoc) throws InvalidMoveException {
+    public Boolean canMove(Location newLoc) throws InvalidMoveException {
         int currentRow = this.location.getRow();
         int currentCol = this.location.getCol();
         int newRow = newLoc.getRow();
@@ -46,6 +46,7 @@ public class Queen extends Piece {
         // Perform the move
         board.movePiece(this.location, newLoc);
         this.setLocation(newLoc); // Update the queen's internal location
+        return null;
     }
 
 

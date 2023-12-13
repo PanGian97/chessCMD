@@ -4,7 +4,7 @@ public class Rook extends Piece {
     }
 
     @Override
-    public void moveTo(Location newLoc) throws InvalidMoveException {
+    public Boolean canMove(Location newLoc) throws InvalidMoveException {
         int currentRow = this.location.getRow();
         int currentCol = this.location.getCol();
         int newRow = newLoc.getRow();
@@ -35,6 +35,7 @@ public class Rook extends Piece {
             this.setLocation(newLoc);
         }
 
+        return null;
     }
 
     @Override

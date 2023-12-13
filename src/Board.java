@@ -50,19 +50,30 @@ public class Board {
         // Move piece logic, assuming valid move
         Piece piece = getPieceAt(from);
         if (piece != null) {
-            piece.moveTo(to);
-            board[to.getRow()][to.getCol()] = piece;
-            board[from.getRow()][from.getCol()] = null;
-            piece.setLocation(to);
+            if (piece.canMove(to)) {
+                board[to.getRow()][to.getCol()] = piece;
+                board[from.getRow()][from.getCol()] = null;
+                piece.setLocation(to);
+            }
         }
     }
 
     public void movePieceCapturing(Location from, Location to) throws InvalidMoveException {
         // Similar to movePiece, but also handle the capturing of the opponent's piece
         Piece capturedPiece = getPieceAt(to);
+        Piece movingPiece = getPieceAt(from);
         if (capturedPiece != null) {
-            // Assuming a method to remove a piece from the game, such as setting it to null
-            // capturedPiece.removeFromBoard(); // This would be a method in the Piece class
+
+            if (capturedPiece.getColor() != movingPiece.getColor()) {
+                if (movingPiece.canMove(to)) {
+                    board[to.getRow()][to.getCol()] = movingPiece;
+                    board[from.getRow()][from.getCol()] = null;
+                    movingPiece.setLocation(to);
+                }
+            } else {
+                throw new InvalidMoveException("Invalid move: Cannot capture a piece of the same color.");
+            }
+
         }
         movePiece(from, to);
     }
@@ -137,7 +148,7 @@ public class Board {
             sb.append(row + 1);  // Row label on the left (8 to 1)
 
             for (int col = 0; col < 8; col++) {
-                Piece piece = board[row][col];
+                Piece piece = board[7 - row][col];
                 char pieceChar = (piece == null) ? ' ' : piece.toString().charAt(0);
                 sb.append(pieceChar);
             }
@@ -172,7 +183,6 @@ public class Board {
 //    sb.append(" abcdefgh\n");  // Column labels at the bottom
 //    return sb.toString();
 //}
-
 
 
 }
