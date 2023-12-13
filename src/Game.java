@@ -9,8 +9,7 @@ public class Game {
         this.currentPlayer = Color.WHITE; // Οι λευκοί παίζουν πρώτοι
     }
 
-    public void play() throws InvalidMoveException {
-        Scanner scanner = new Scanner(System.in);
+    public void play(Scanner scanner) {
         boolean gameRunning = true;
 
         while (gameRunning) {
@@ -20,23 +19,23 @@ public class Game {
 
             String input = scanner.nextLine();
             if (input.startsWith(":")) {
-                handleCommand(input);
+                if (input.equals(":exit")) {
+                    gameRunning = exitGame(); // Exit the game loop if :exit command is given
+                } else {
+                    handleCommand(input);
+                }
             } else {
                 try {
-                    // Example: make a move
-                   handleMove(input);
-                    currentPlayer = currentPlayer.nextColor();
+                    handleMove(input);
+                    currentPlayer = currentPlayer.nextColor(); // Switch players after a successful move
                 } catch (InvalidMoveException e) {
                     System.out.println("Invalid move: " + e.getMessage());
-
                 }
-
             }
-            // Switch players after each successful move
-
         }
         scanner.close();
     }
+
 
     private void handleMove(String moveString) throws InvalidMoveException {
         try {
@@ -52,6 +51,7 @@ public class Game {
             }
 
             System.out.println("Move made from " + from + " to " + to);
+
         } catch (InvalidLocationException e) {
             System.out.println(e.getMessage());
             // Don't switch players if move is invalid
@@ -59,19 +59,11 @@ public class Game {
         }
     }
 
-    private void saveGame() {
-        // This is placeholder logic. Actual saving would involve writing the game state to a file.
-        System.out.println("Game saved (placeholder logic).");
-    }
 
-    private void openGame() {
-        // This is placeholder logic. Actual loading would involve reading the game state from a file.
-        System.out.println("Game loaded (placeholder logic).");
-    }
-
-    private boolean exitGame() {
+    private Boolean exitGame() {
         System.out.println("Exiting game.");
-        return false; // This would actually terminate the play loop and end the game
+        return false;
+
     }
 
     private void printHelp() {
@@ -85,15 +77,7 @@ public class Game {
 
     private void handleCommand(String command) {
         switch (command) {
-            case ":save":
-                saveGame();
-                break;
-            case ":load":
-                openGame();
-                break;
-            case ":exit":
-                exitGame();
-                break;
+
             case ":help":
                 printHelp();
                 break;

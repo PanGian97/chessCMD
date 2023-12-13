@@ -43,10 +43,8 @@ public class Queen extends Piece {
             throw new InvalidMoveException("Invalid move: target square is occupied by a friendly piece.");
         }
 
-        // Perform the move
-        board.movePiece(this.location, newLoc);
         this.setLocation(newLoc); // Update the queen's internal location
-        return null;
+        return true;
     }
 
 

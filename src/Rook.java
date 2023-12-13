@@ -29,13 +29,14 @@ public class Rook extends Piece {
         if (targetPiece != null && targetPiece.getColor() == this.color) {
             throw new InvalidMoveException("Invalid move: target square is occupied by a friendly piece.");
         } else if (targetPiece != null && targetPiece.getColor() != this.color) {
-            board.movePieceCapturing(this.location, newLoc);
-        } else {
-            board.movePiece(this.location, newLoc);
             this.setLocation(newLoc);
+            return true;
+        } else {
+            this.setLocation(newLoc);
+            return true;
         }
 
-        return null;
+
     }
 
     @Override

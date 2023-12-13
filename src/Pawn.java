@@ -36,7 +36,6 @@ public class Pawn extends Piece {
             throw new InvalidMoveException("Invalid move: Pawns can only move forward one square or two squares on their first move, or diagonally forward to capture.");
 
         }
-
     }
 
     @Override

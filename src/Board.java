@@ -161,28 +161,6 @@ public class Board {
         return sb.toString();
     }
 
-//@Override
-//public String toString() {
-//    StringBuilder sb = new StringBuilder();
-//    sb.append(" abcdefgh\n");  // Column labels at the top
-//     int row=0;
-//     int col=0;
-//    for (col = 7; col >= 0; col--) {
-//        sb.append(col+ 1);
-//
-//        for (row = 0; row < 8; row++) {
-//            Piece piece = board[row][col];
-//            char pieceChar = (piece == null) ? '_' : piece.toString().charAt(0);
-//            sb.append(pieceChar);
-//        }
-//
-//        sb.append(col + 1);  // Row label on the right
-//        sb.append("\n");    // New line after each row
-//    }
-//
-//    sb.append(" abcdefgh\n");  // Column labels at the bottom
-//    return sb.toString();
-//}
 
 
 }

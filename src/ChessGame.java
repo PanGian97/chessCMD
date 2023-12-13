@@ -8,7 +8,7 @@ public class ChessGame {
         board.init();  // Set up the pieces in their starting positions
 
         Game game = new Game();
-        game.play();
+        game.play(scanner);
         scanner.close();  // Close the scanner when the game is finished
         System.out.println("Game finished.");
     }
