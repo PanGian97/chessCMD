@@ -11,8 +11,7 @@ public class Location {
         if (loc.length() != 2 || loc.charAt(0) < 'a' || loc.charAt(0) > 'h' || loc.charAt(1) < '1' || loc.charAt(1) > '8') {
             throw new InvalidLocationException("Invalid location: " + loc);
         }
-//        this.col = loc.charAt(1) - '1';
-//        this.row = loc.charAt(0) - 'a';
+
         switch (loc.charAt(1)) {
             case '1':
                 this.row = 7;
@@ -39,7 +38,7 @@ public class Location {
                 this.row = 0; // First row in a 0-indexed 8x8 array
                 break;
             default:
-                throw new InvalidLocationException("Invalid file: " + loc.charAt(1));
+                throw new InvalidLocationException("Invalid location: " + loc.charAt(1));
         }
         switch (loc.charAt(0)) {
             case 'a':
@@ -67,7 +66,7 @@ public class Location {
                 this.col = 7;
                 break;
             default:
-                throw new InvalidLocationException("Invalid file: " + loc.charAt(0));
+                throw new InvalidLocationException("Invalid location: " + loc.charAt(0));
         }
     }
 

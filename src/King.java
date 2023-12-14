@@ -14,13 +14,12 @@ public class King extends Piece {
             // Check if the target location is valid (not occupied by a piece of the same color)
             Piece targetPiece = board.getPieceAt(newLoc);
             if (targetPiece == null) {
-                // Move is valid, so update the king's location
-                board.movePiece(this.location, newLoc);
                 this.setLocation(newLoc);
-            }// Update the king's internal location
+                return true;
+            }
             else if (targetPiece.getColor() != this.color) {
-                board.movePieceCapturing(this.location, newLoc);
                 this.setLocation(newLoc);
+                return true;
             } else {
                 throw new InvalidMoveException("Invalid move: target square is occupied by a friendly piece.");
             }
@@ -28,7 +27,7 @@ public class King extends Piece {
             throw new InvalidMoveException("Invalid move: King can only move one square in any direction.");
         }
 
-        return null;
+
     }
 
     @Override

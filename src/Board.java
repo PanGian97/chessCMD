@@ -47,7 +47,7 @@ public class Board {
     }
 
     public void movePiece(Location from, Location to) throws InvalidMoveException {
-        // Move piece logic, assuming valid move
+
         Piece piece = getPieceAt(from);
         if (piece != null) {
             if (piece.canMove(to)) {
@@ -59,7 +59,7 @@ public class Board {
     }
 
     public void movePieceCapturing(Location from, Location to) throws InvalidMoveException {
-        // Similar to movePiece, but also handle the capturing of the opponent's piece
+
         Piece capturedPiece = getPieceAt(to);
         Piece movingPiece = getPieceAt(from);
         if (capturedPiece != null) {
